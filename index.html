@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Quiz System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Login/Signup View -->
+        <div id="auth-view" class="view">
+            <div class="auth-container">
+                <h1>Cloud Quiz System</h1>
+                <div id="auth-tabs">
+                    <button class="tab-btn active" onclick="switchAuthTab('login')">Login</button>
+                    <button class="tab-btn" onclick="switchAuthTab('signup')">Sign Up</button>
+                </div>
+                
+                <div id="login-form" class="auth-form">
+                    <input type="email" id="login-email" placeholder="Email" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button onclick="login()">Login</button>
+                </div>
+                
+                <div id="signup-form" class="auth-form" style="display: none;">
+                    <input type="text" id="signup-name" placeholder="Full Name" required>
+                    <input type="email" id="signup-email" placeholder="Email" required>
+                    <input type="password" id="signup-password" placeholder="Password" required>
+                    <button onclick="signup()">Create Account</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard View -->
+        <div id="dashboard-view" class="view" style="display: none;">
+            <header>
+                <h1>Welcome, <span id="user-name"></span></h1>
+                <button onclick="logout()">Logout</button>
+            </header>
+            
+            <div id="student-dashboard">
+                <h2>Available Quizzes</h2>
+                <div id="student-quizzes" class="quiz-list"></div>
+                <h2>Your Results</h2>
+                <div id="student-results" class="results-list"></div>
+            </div>
+        </div>
+
+        <!-- Quiz Start View -->
+        <div id="quiz-start-view" class="view" style="display: none;">
+            <div class="quiz-start-container">
+                <h1>Getting Started</h1>
+                <div id="countdown-timer">5</div>
+                <p>Quiz will begin in <span id="countdown-text">5</span> seconds...</p>
+            </div>
+        </div>
+
+        <!-- Take Quiz View -->
+        <div id="take-quiz-view" class="view" style="display: none;">
+            <header>
+                <h1 id="quiz-taking-title"></h1>
+                <div id="quiz-timer"></div>
+            </header>
+            
+            <div id="quiz-questions-container">
+                <!-- Quiz questions will be loaded here -->
+            </div>
+            
+            <button onclick="submitQuiz()" class="primary">Submit Quiz</button>
+        </div>
+
+        <!-- Quiz Results View -->
+        <div id="results-view" class="view" style="display: none;">
+            <header>
+                <h1>Quiz Results</h1>
+                <button onclick="showDashboard()">Back to Dashboard</button>
+            </header>
+            
+            <div class="results-container">
+                <div id="results-confirmation">
+                    <h3>Would you like to see your quiz results?</h3>
+                    <div class="confirmation-buttons">
+                        <button onclick="showResultsDetails()" class="primary">Yes</button>
+                        <button onclick="showDashboard()">No</button>
+                    </div>
+                </div>
+                <div id="results-details" style="display: none;">
+                    <h2 id="results-quiz-title"></h2>
+                    <p>Score: <span id="results-score"></span></p>
+                    <p id="results-feedback"></p>
+                    <div id="results-questions-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
